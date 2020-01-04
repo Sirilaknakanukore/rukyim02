@@ -1,0 +1,55 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.🍔 {
+    margin-bottom: 0;
+}
+
+.🐩 {
+    margin-top: 10px;
+}
+
+.🎩-wrapper {
+    font-size: 100px;
+    line-height: 1;
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.🎩 {
+    position: relative;
+    z-index: 10;
+}
+
+.🐑 {
+    display: block;
+    position: relative;
+    top: 150px;
+}
+
+.choose-emojis {
+    margin-top: 110px;
+}
+
+.emoji {
+    top: 200px;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.e {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
