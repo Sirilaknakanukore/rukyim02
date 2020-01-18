@@ -4,13 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Comphoto extends Model
 {
     //
-    protected $fillable = array('id','user_id','blog_id','body');
+    protected $fillable = array('id','group_id','photo_id','body');
 
-    public function blog(){
-        return $this->belongsTo('App\blog');
+    public function photos(){
+        return $this->belongsTo('App\Photo');
     }
+    public function group(){
+        return $this->belongsTo('App\Group');
+    }
+
 
 }

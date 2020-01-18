@@ -47,6 +47,6 @@ class PostgroupController extends Controller
     public function destroy($id) {
         $photo = Photo::find($id);
         $photo->delete();
-        return redirect('/group/'.$photo->group_id)->with('success','photo','Photo Delete');
+        return redirect('/group/'.$photo->group_id)->with('success','photos','Photo Delete');
     }
 }

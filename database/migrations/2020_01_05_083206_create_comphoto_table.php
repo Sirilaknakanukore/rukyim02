@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvatarTable extends Migration
+class CreateComphotoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAvatarTable extends Migration
      */
     public function up()
     {
-        Schema::create('avatar', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->string('cover_avatar');
+        Schema::create('comphoto', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('photo_id');
+            $table->mediumText('body');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAvatarTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avatar');
+        Schema::dropIfExists('comphoto');
     }
 }

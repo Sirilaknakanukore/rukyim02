@@ -1,3 +1,4 @@
+<body style="background-color: #fcf1dd;">
 @extends('layouts.app')
 @section('content')
     <br>
@@ -26,3 +27,4 @@
    </div>
 
 @endsection
+</body>

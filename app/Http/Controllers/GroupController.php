@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comphoto;
 use App\Group;
+use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {
@@ -54,12 +57,17 @@ class GroupController extends Controller
 
         //  SELECT * FROM photo WHERE album_id =$id
         $groups = Group::find($id);
+//        $comphotos = Comphoto::where('photo_id',$id)->get();
+//         $comphotos = DB::table('photos')->where('group_id',$id)->join('comphotos','photos.id','=','comphotos.photo_id')->select('*')->get();
+
+//         dd($comphotos);
+
         return view('group.detail',compact('groups'));
     }
     public function search(Request $request){
 
         $search = $request->get('search');
-        $groups = Group::where('description','like','%'.$search.'%') ->paginate(2)->setpath('');
+        $groups = Group::where('name','like','%'.$search.'%') ->paginate(5)->setpath('');
 
 
         return view('group.show',['groups'=>$groups]);

@@ -14,7 +14,7 @@
                 @foreach($blogs as $blog)
                     <div class="col-md-6" >
                         <a href="blog/detail/{{$blog->id}}" style="text-decoration: none;">
-                            <div class="card-body " style="border: none;">
+                            <div class="card-body" style="border: none;">
                                 <div class="card mb-sm-2 box-shadow" style="border: none;background-color: #fdf9f3; border-radius: 25px;">
                                     <div class="card-image" style="overflow: hidden;
   width: 100%; height: 200px;">

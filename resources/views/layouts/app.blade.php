@@ -8,6 +8,8 @@
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     {{--<link rel="stylesheet" href="/css/style.css">--}}
     <link href="https://fonts.googleapis.com/css?family=Pridi&display=swap" rel="stylesheet">
+
+
 </head>
 <body style="background-color:#f8d9a9;">
 @include('inc.navbar')
@@ -25,6 +27,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+
+
+
 <script>
     $('.datepicker').datepicker({
         uiLibrary: 'bootstrap4'
@@ -101,6 +106,10 @@
         });
     });
 </script>
+
+
+
+
 
 </body>
 </html>

@@ -11,5 +11,9 @@ class Photo extends Model
     public function group(){
         return $this->belongsTo('App\Group');
     }
+    public function comphoto(){
+        return $this->hasMany('App\Comphoto');
+    }
+
 
 }

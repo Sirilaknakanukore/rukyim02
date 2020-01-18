@@ -52,10 +52,21 @@ Route::post('/photos/store','PostgroupController@store');
 Route::get('/photos/{id}','PostgroupController@show');
 Route::delete('/photos/{id}','PostgroupController@destroy');
 
+Route::post('/group/{id}/comphoto','ComphotoController@store');
+
+Route::get('/activity/create','ActivityController@create');
+Route::post('/activity/store','ActivityController@store');
+Route::get('/activity','ActivityController@show');
+
 //backend
 
 //Route::get('/backend/create/survey','AvatarController@create');
 Route::post('/backend/survey/store','AvatarController@store');
 
-Route::get('/backend/avatar','FirstController@create');
-Route::post('/backend/avatar/store','FirstController@store');
+//Route::get('/backend/avatar','FirstController@create');
+//Route::post('/backend/avatar/store','FirstController@store');
+
+
+
+Route::get('/backend/avatar', 'FormController@index');
+Route::post('upload_data', 'FormController@store');
