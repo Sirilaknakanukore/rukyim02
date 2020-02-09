@@ -15,20 +15,24 @@
             @endforeach
         @endif
 
-        @if(!empty($avatars))
-            @foreach($avatars as $avatar)
+
+
+        @foreach($data as $image)
                 <div class="card-body" style=" vertical-align: center;background-color: #f4e6bd;">
-                    <div class="mb-2 box-shadow" style="border: none;">
-                        <img src="uploads/cover_avatar/{{$avatar->cover_avatar}}" style="width: 50%; align-items: center; margin-left: 100px;" alt="" class="card-img-top">
+                    <?php
+                    $filename = json_decode($image->filename);?>
+                    <div class="card-img">
+                    <img src="{{ asset('/image/'.$filename[0]) }}" style="width: 100%; height: 100%">
                     </div>
                 </div>
                 <br>
-            @endforeach
-        @endif
+        @endforeach
+
         <div class="card w-100">
             <a href="/profile/post" style="color: black; text-decoration: none;"><div class="card-body">
                     <h5 class="card-title" style="font-family:'Pridi',serif;">ประวัติการโพส</h5>
-                </div></a>
+                </div>
+            </a>
         </div>
     </div>
 

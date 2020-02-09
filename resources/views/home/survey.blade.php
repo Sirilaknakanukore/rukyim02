@@ -147,7 +147,7 @@
                 <label for="option5">งานศิลปะ</label>
             </div>
             <div class="inputGroup" style="border-radius: 10px;">
-                <input id="option6" name="description" value="ท่องเที่ยว" type="checkbox"/>
+                <input id="option6" name="description[]" value="ท่องเที่ยว" type="checkbox"/>
                 <label for="option6">ท่องเที่ยว</label>
             </div>
             <div class="inputGroup" style="border-radius: 10px;">
@@ -161,6 +161,10 @@
             <div class="inputGroup" style="border-radius: 10px;">
                 <input id="option9" name="description[]" value="ธรรมมะ" type="checkbox"/>
                 <label for="option9">ธรรมมะ</label>
+            </div>
+            <div class="inputGroup" style="border-radius: 10px;">
+                <input id="option9" name="description[]" value="เล่นกีฬา" type="checkbox"/>
+                <label for="option9">เล่นกีฬา</label>
             </div>
             <button type="submit" value="Submit" class="btn btn-secondary btn-dark btn-block" style="font-family:'Pridi', serif; background-color: black; height: 50px;">เขียนบันทึกเสร็จสิ้น</button>
         </form>

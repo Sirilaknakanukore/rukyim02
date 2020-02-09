@@ -7,12 +7,12 @@ use App\Comment;
 use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class BlogController extends Controller
 {
     public function create(){
-
         return view('blog.create');
     }
 
@@ -62,14 +62,18 @@ class BlogController extends Controller
 
         //  SELECT * FROM photo WHERE album_id =$id
         $blogs = blog::find($id);
+        $blog = json_decode($blogs);
+        $tagblogs = DB::table('blogs')->select('*')->where('id','!=',$id)->where('tags','=',$blog->tags)->limit(3)->get();
+
+//        dd($tagblogs);
+
         $blogs->user_id = Auth::id();
         $comments = Comment::where('blog_id',$id)->get();
         $exitslike = Like::where('user_id',Auth::id())->where('blog_id',$id)->first();
         $likecount = Like::where('blog_id',$id)->count();
 
-        return view('blog.detail',compact('blogs','comments','likecount','exitslike'));
+        return view('blog.detail',compact('blogs','comments','likecount','exitslike','tagblogs'));
     }
-
     public function destroy($id) {
         $blog = blog::find($id);
         $blog->delete();

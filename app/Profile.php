@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     //
-    protected $fillable = array('id','user_id','blog_id');
+    protected $fillable = array('id','user_id','image');
 
-    public function blog(){
-        return $this->belongsTo('App\blog');
+    public function FormMultipleUpload(){
+        return $this->belongsTo('App\FormMultipleUpload');
     }
 
 }

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\blog;
 use App\Comment;
+use App\FormMultipleUpload;
 use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+//
     //
     public function show(){
         //  SELECT * FROM photo WHERE album_id =$id
@@ -27,4 +29,5 @@ class ProfileController extends Controller
 
         return view('home.detail',compact('blogs','comments','likecount','exitslike'));
     }
+
 }

@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Avatar;
 use App\backsurvey;
+use App\FormMultipleUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AvatarController extends Controller
 {
-    public function create(){
 
-        return view('backhome.homesur');
-    }
     public function store(Request $request)
     {
 
@@ -33,10 +31,5 @@ class AvatarController extends Controller
     $backsurveys = backsurvey::all()->where('user_id',Auth::id())->first();
     return view('home.survey',compact('backsurveys'));
 }
-    public function home(){
-
-        $avatar = Avatar::all();
-        return view('home.home',compact('avatar'));
-    }
 
 }

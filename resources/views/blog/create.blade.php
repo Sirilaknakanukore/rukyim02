@@ -1,6 +1,28 @@
 <body style="background-color: #fbf5e3;">
 @extends('layouts.app')
 @section('content')
+    <style>
+
+        #main{
+            width:100%;
+            height:100%;
+            margin:0 auto
+        }
+        textarea{
+            line-height:1.6;
+            font-size:137.5%;
+            padding:8%;
+            border:0;
+            border-top:1px solid #FFF;
+            background:white;
+            width:100%;height:100%;
+            overflow-y:scroll;
+            overflow-x:hidden;
+            font-family:'Pridi',serif; ;
+            outline:0
+        }
+
+    </style>
     <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/blog.css');?>">
     <br>
     <br>
@@ -19,16 +41,9 @@
                 <input style="border: none;" class="form-control" name="cover_image" type="file">
             </div>
 
-            {{--img--}}
-            <div class="card mt-2" style="border: none;">
-                <div class="card-body" style="border: none;">
-                    <div class="form-group" style="font-family:'Pridi', serif; ">
-                        <label for="body" class="control-label">เล่าเรื่องราวของคุณ</label>
-                        <textarea class="form-control" name="description" cols="50" rows="10" id="body" placeholder="เล่าเรื่องราว"></textarea>
-                    </div>
-                </div>
+            <div id="main">
+                <textarea id="editor" name="description" placeholder="เขียนเรื่องเล่า"cols="45" rows="5"></textarea>
             </div>
-
             <br>
             <label for="text" class="control-label" style="font-family:'Pridi',serif;">เพิ่ม tag ที่เกี่ยวข้องกับบทความของคุณ</label>
             <div class="card mt-2" style="border: none;">
@@ -43,6 +58,21 @@
             <button type="submit" value="Submit" class="btn btn-secondary btn-dark btn-block" style="font-family:'Pridi', serif; background-color: black; height: 50px;" >เขียนบันทึกเสร็จสิ้น</button>
         </form>
     </div>
+
+    <script>
+
+        const editor = document.getElementById('editor');
+
+        editor.addEventListener('keydown', (e) => {
+
+            console.log(e.key);
+            if(e.key === 'Tab') {
+                // e.preventDefault();
+                document.execCommand('indent', false, null);
+            }
+        });
+    </script>
+
 </body>
 
 

@@ -3,96 +3,86 @@
     <br>
     <br>
     <br>
-    <style>
-        /* Font from Google fonts */
-        @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900");
-        /* Color palette */
-        /* Basic styles */
-
-        /* Form Styles */
-        .form {
-            max-width: 610px;
-            margin: 60px auto;
+    <style class="cp-pen-styles">.nopad {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
-
-
-        .form__answer {
-            display: inline-block;
-            box-sizing: border-box;
-            width: 23%;
-            margin: 20px 1% 20px 0;
-            height: 180px;
-            vertical-align: top;
-            font-size: 22px;
-            text-align: center;
-        }
-
-        label {
-            border: 1px solid rgba(250, 250, 250, 0.15);
-            box-sizing: border-box;
-            display: block;
-            height: 300px;
-            width: 100%;
-            padding: 10px 10px 30px 10px;
+        /*image gallery*/
+        .image-checkbox {
             cursor: pointer;
-            opacity: .5;
-            transition: all .5s ease-in-out;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            border: 4px solid transparent;
+            margin-bottom: 0;
+            outline: 0;
         }
-        label:hover, label:focus, label:active {
-            border: 1px solid rgba(250, 250, 250, 0.5);
-        }
-
-
-        /* Input style */
-        input[type="radio"] {
-            opacity: 0;
-            width: 0;
-            height: 0;
+        .image-checkbox input[type="checkbox"] {
+            display: none;
         }
 
-        input[type="radio"]:active ~ label {
-            opacity: 1;
+        .image-checkbox-checked {
+            border-color: #714233;
         }
-
-        input[type="radio"]:checked ~ label {
-            opacity: 1;
-            border: 1px solid #FAFAFA;
+        .image-checkbox .fa {
+            position: absolute;
+            color: #4A79A3;
+            background-color: #fff;
+            padding: 10px;
+            top: 0;
+            right: 0;
         }
-
-
-
-
-
-
+        .image-checkbox-checked .fa {
+            display: block !important;
+        }
     </style>
+    <div class="container">
+        <br>
+        <br>
+        <h3 style="font-family:'Pridi', serif; color: #4c110f; text-align: center;">เลือกผู้ช่วยของคุณ <br/>
+            <span style="font-family:'Pridi', serif; color: #e49965; font-size: 20px;">(เลือก 1 คำตอบ)</span></h3>
 
-<div class="container">
-    <h1 style="font-family:'Pridi', serif; color: #764740; " class="🍔">เลือก</h1>
-    <h4 style="font-family:'Pridi', serif; color: #764740; " class="🍔">ผู้ช่วยของคุณ</h4>
-
-    @if(!empty($avatars))
-        @foreach($avatars as $avatar)
-            <div class="row row-cols-md-3"style="border: none;">
-                <div class="col mb-4" style="background-color: #f8d9a9; border: none;">
-                    <div class="card" style="background-color: #f8d9a9; border: none;">
-                        <center><img src="uploads/cover_avatar/{{$avatar->cover_avatar}}" class="card-img-top" alt="..." style="width: 30%; "></center>
-                    </div>
+        <form style="font-family:'Pridi', serif;" class="form" action="/avatar/store" method="post">
+            {{ csrf_field() }}
+            @foreach($data as $image)
+                <div class="col-xs-4 col-sm-3 col-md-2 nopad text-center">
+                    <label class="image-checkbox">
+                        <?php $img = json_decode($image);
+                            $filename = json_decode($img->filename);?>
+                        <img src="{{ asset('/image/'.$filename[0]) }}" style="width: 50%; height: 80%">
+                        <input type="checkbox" name="image_id" value="{{ $img->id }}">
+                    </label>
                 </div>
-            </div>
-                    {{--<a href="/home/survey"><button type="submit" class="btn btn-secondary btn-dark btn-block" style="font-family:'Pridi', serif; margin-top: 230px; background-color: black; height: 60px;" >ขั้นตอนถัดไป</button></a>--}}
+                <br>
+                <br>
+            @endforeach
+            <input type="submit" value="Submit" class="btn btn-secondary btn-dark btn-block" style="font-family:'Pridi', serif; background-color: black; height: 50px;">
+        </form>
 
+    </div>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>// image gallery
+        // init the state from the input
+        $(".image-checkbox").each(function () {
+            if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+                $(this).addClass('image-checkbox-checked');
+            } else {
+                $(this).removeClass('image-checkbox-checked');
+            }
+        });
 
+        // sync the state to the input
+        $(".image-checkbox").on("click", function (e) {
+            $(this).toggleClass('image-checkbox-checked');
+            var $checkbox = $(this).find('input[type="checkbox"]');
+            $checkbox.prop("checked", !$checkbox.prop("checked"))
 
-    {{--<div class="choose-emojis">--}}
-        {{--<a class="emoji"><span class="e"><img src="uploads/cover_avatar/{{$avatar->cover_avatar}}" alt="" style="width: 100%;"></span></a>--}}
-        @endforeach
-    @endif
-
-<br>
-
-
-</div>
+            e.preventDefault();
+        });
+        //# sourceURL=pen.js
+    </script>
 
 
 

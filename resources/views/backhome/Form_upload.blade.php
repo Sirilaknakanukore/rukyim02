@@ -1,9 +1,9 @@
 <body style="background-color: #fbf5e3;">
-@extends('layouts.app')
+@extends('layouts.adminapp')
 @section('content')
     <html lang="en">
     <head>
-        <title>Laravel Multiple File Upload Example</title>
+        <title style="font-family: 'Pridi', serif;  ">อัพโหลดภาพ</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
@@ -69,7 +69,7 @@
             </div>
         @endif
 
-        <h3 class="jumbotron"><i class="glyphicon glyphicon-upload"></i> Laravel Multiple File Upload</h3>
+        <h3 class="jumbotron" style="font-family: 'Pridi', serif; "><i class="glyphicon glyphicon-upload"></i> อัพโหลดภาพ</h3>
         <form method="post" action="{{url('upload_data')}}" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="input-group control-group increment" >
@@ -101,7 +101,7 @@
             @foreach($data as $image)
                 <tr><td>{{$image->id}}</td>
                     <td> <?php foreach (json_decode($image->filename)as $picture) { ?>
-                        <img src="{{ asset('/image/'.$picture) }}" style="height:120px; width:200px"/>
+                        <img src="{{ asset('/image/'.$picture) }}" style="height:500px; width:400px"/>
                         <?php } ?>
                     </td>
                 </tr>

@@ -57,11 +57,6 @@ class GroupController extends Controller
 
         //  SELECT * FROM photo WHERE album_id =$id
         $groups = Group::find($id);
-//        $comphotos = Comphoto::where('photo_id',$id)->get();
-//         $comphotos = DB::table('photos')->where('group_id',$id)->join('comphotos','photos.id','=','comphotos.photo_id')->select('*')->get();
-
-//         dd($comphotos);
-
         return view('group.detail',compact('groups'));
     }
     public function search(Request $request){
