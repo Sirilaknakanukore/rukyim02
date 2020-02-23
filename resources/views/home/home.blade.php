@@ -49,7 +49,7 @@
                     <label class="image-checkbox">
                         <?php $img = json_decode($image);
                             $filename = json_decode($img->filename);?>
-                        <img src="{{ asset('/image/'.$filename[0]) }}" style="width: 50%; height: 80%">
+                            <img src="{{ asset('/image/'.$filename[0]) }}" style="width: 50%; height: 80%">
                         <input type="checkbox" name="image_id" value="{{ $img->id }}">
                     </label>
                 </div>

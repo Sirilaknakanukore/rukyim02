@@ -186,6 +186,7 @@
     {{--<h6 style="font-family:'Pridi',serif; color: #b5b4b4; font-size: 14px; text-align: center; color: black;">ชื่อผู้ใช้ : {{ Auth::user()->name }}</h6>--}}
     {{--<center><button  type="button" class="btn btn-outline-secondary" style=" font-family:'Pridi', serif; width:150px;">ติดตาม</button></center>--}}
     {{--container description--}}
+    <h2 style="font-family: 'Pridi', serif; text-align: center; color: #4e4e4e; font-size: 25px; ">แนะนำบทความ</h2>
     <br>
 
     @foreach($tagblogs as $tagblog)
@@ -206,10 +207,10 @@
                         </form>
                     </div>
                 </div>
-        </a>
+            </a>
         </div>
     @endforeach
-<br>
+    <br>
     <br>
     <div class="container">
         <div class="card mt-2" style="background-color: #f3e5bc; border: none;">
@@ -247,6 +248,8 @@
     </div>
     {{--createcomment--}}
     <br>
+
+
 
 
 @endsection

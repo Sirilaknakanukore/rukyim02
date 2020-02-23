@@ -47,7 +47,6 @@ class ActivityController extends Controller
         $activity->date = $request->input('date');
         $activity->location = $request->input('location');
         $activity->time = $request->input('time');
-        $activity->user_id = Auth::id();
         $activity->activity_image = $filenameToStore;
         $activity->save();
 

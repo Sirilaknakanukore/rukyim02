@@ -16,24 +16,23 @@
         @endif
 
 
-
+        <nav class="nav nav-pills nav-justified">
+            <a style="font-family:'Pridi', serif; background-color: #F38644;" class="nav-item nav-link active" href="#">profile</a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/profile/post">โพสต์</a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="#">กิจกรรม</a>
+        </nav>
+        <br>
         @foreach($data as $image)
                 <div class="card-body" style=" vertical-align: center;background-color: #f4e6bd;">
                     <?php
                     $filename = json_decode($image->filename);?>
                     <div class="card-img">
-                    <img src="{{ asset('/image/'.$filename[0]) }}" style="width: 100%; height: 100%">
+                    <img class="rounded mx-auto d-block" src="{{ asset('/image/'.$filename[0]) }}">
                     </div>
                 </div>
                 <br>
         @endforeach
 
-        <div class="card w-100">
-            <a href="/profile/post" style="color: black; text-decoration: none;"><div class="card-body">
-                    <h5 class="card-title" style="font-family:'Pridi',serif;">ประวัติการโพส</h5>
-                </div>
-            </a>
-        </div>
     </div>
 
 

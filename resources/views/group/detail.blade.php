@@ -27,7 +27,7 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <p style="font-family:'Pridi',serif;  ">{{$photos->description}}</p>
+                                    <p style="font-family:'Pridi',serif; font-size: 24px;">{{$photos->description}}</p>
                                 </div>
                                 <br>
 

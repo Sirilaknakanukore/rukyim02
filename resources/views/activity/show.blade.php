@@ -40,113 +40,99 @@
         <br>
         <br>
         <!-- Footer -->
-        <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+        <footer class="page-footer font-small unique-color-dark" style="background-color: #faf4d5;">
+
+            <div style="background-color: #F38644;">
+                <div class="container">
+
+                    <!-- Grid row-->
+                    <div class="row py-4 d-flex align-items-center">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                            <h6 class="mb-0" style="font-family:'Pridi',serif; ">ช่องทางการติดต่อ RUKYIM</h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                            <!-- Facebook -->
+                            <a class="fb-ic">
+                                <i class="fab fa-facebook-f white-text mr-4"> </i>
+                            </a>
+                            <!-- Twitter -->
+                            <a class="tw-ic">
+                                <i class="fab fa-twitter white-text mr-4"> </i>
+                            </a>
+                            <!-- Google +-->
+                            <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                            </a>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row-->
+
+                </div>
+            </div>
 
             <!-- Footer Links -->
-            <div class="container text-center text-md-left" style="background-color: black;">
+            <div class="container text-center text-md-left mt-5">
 
                 <!-- Grid row -->
-                <div class="row">
+                <div class="row mt-3">
 
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
-
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h5 class="font-weight-bold text-uppercase mb-4" style="color: white;font-family:'Pridi', serif;">Content</h5>
-                        <p style="color: white;font-family:'Pridi', serif;">Rukyim</p>
-                        <p style="color: white;font-family:'Pridi', serif;">ชุมชนแลกเปลี่ยนประสบการณ์ของคนวัยเก๋า แชร์เรื่องราวหรือบทความ</p>
+                        <h6 class="text-uppercase font-weight-bold">RUKYIM:-)</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p style="font-family:'Pridi',serif;">Rukyim ชุมชนแลกเปลี่ยนประสบการณ์ ทั้งองค์ความรู้หรือแบ่งปันชีวิตของท่าน</p>
 
                     </div>
                     <!-- Grid column -->
 
-                    <hr class="clearfix w-100 d-md-none">
+
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
                         <!-- Links -->
-                        <h5 class="font-weight-bold text-uppercase mb-4" style="color: white;font-family:'Pridi', serif;">About</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <p>
-                                    <a href="/blog" style="color: white;font-family:'Pridi', serif; text-decoration: none;">แบ่งปันเรื่องราว</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="/group" style="color: white;font-family:'Pridi', serif; text-decoration: none;">สร้างกลุ่ม</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="/activity" style="color: white;font-family:'Pridi', serif; text-decoration: none;">กิจกรรม</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="/profile" style="color: white;font-family:'Pridi', serif; text-decoration: none;">โปรไฟล์</a>
-                                </p>
-                            </li>
-                        </ul>
+                        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a style="font-family:'Pridi',serif; color: black; text-decoration: none;" href="#!">แบ่งปันประสบการณ์</a>
+                        </p>
+                        <p>
+                            <a style="font-family: 'Pridi',serif; color: black; text-decoration: none;" href="#!">สร้างกลุ่ม</a>
+                        </p>
+                        <p>
+                            <a style="font-family: 'Pridi',serif; color: black; text-decoration: none;" href="#!">กิจกรรม</a>
+                        </p>
+                        <p>
+                            <a style="font-family: 'Pridi',serif; color: black; text-decoration: none;" href="#!">โปรไฟล์</a>
+                        </p>
 
                     </div>
                     <!-- Grid column -->
 
-                    <hr class="clearfix w-100 d-md-none">
-
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-                        <!-- Contact details -->
-                        <h5 class="font-weight-bold text-uppercase mb-4" style="color: white;font-family:'Pridi', serif; text-decoration: none;">Address</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <p style="color: white;font-family:'Pridi', serif; text-decoration: none;">
-                                    <i class="fas fa-home mr-3" style="color: white;"></i>บางนาตราด</p>
-                            </li>
-                            <li>
-                                <p style="color: white;font-family:'Pridi', serif; text-decoration: none;">
-                                    <i class="fas fa-envelope mr-3" style="color: white;" ></i> rukyim@gmail.com</p>
-                            </li>
-                            <li>
-                                <p style="color: white;font-family:'Pridi', serif; text-decoration: none;">
-                                    <i class="fas fa-phone mr-3" style="color: white;"></i> + 01 234 567 88</p>
-                            </li>
-                            <li>
-                                <p style="color: white;font-family:'Pridi', serif; text-decoration: none;">
-                                    <i class="fas fa-print mr-3" style="color: white;"></i> + 01 234 567 89</p>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="clearfix w-100 d-md-none">
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
-
-                        <!-- Social buttons -->
-                        <h5 class="font-weight-bold text-uppercase mb-4" style="color: white;font-family:'Pridi', serif;" >Follow Us</h5>
-
-                        <!-- Facebook -->
-                        <a type="button" class="btn-floating btn-fb">
-                            <i class="fab fa-facebook-f" style="color: white;"></i>
-                        </a>
-                        <!-- Twitter -->
-                        <a type="button" class="btn-floating btn-tw">
-                            <i class="fab fa-twitter" style="color: white;"></i>
-                        </a>
-                        <!-- Google +-->
-                        <a type="button" class="btn-floating btn-gplus">
-                            <i class="fab fa-google-plus-g" style="color: white;"></i>
-                        </a>
-                        <!-- Dribbble -->
-                        <a type="button" class="btn-floating btn-dribbble">
-                            <i class="fab fa-dribbble" style="color: white;"></i>
-                        </a>
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold" style="font-family: 'Pridi',serif;">ช่องทางติดต่อ</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p style="font-family: 'Pridi',serif;">
+                            <i class="fas fa-home mr-3"></i> บางนาตราด 13 , 10260</p>
+                        <p style="font-family: 'Pridi',serif;">
+                            <i class="fas fa-envelope mr-3"></i> Rukyim@example.com</p>
+                        <p style="font-family: 'Pridi',serif;">
+                            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                        <p style="font-family: 'Pridi',serif;">
+                            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
 
                     </div>
                     <!-- Grid column -->
@@ -158,13 +144,16 @@
             <!-- Footer Links -->
 
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="/"> Rukyim.com</a>
+            <div style="background-color: #faf7e7;">
+                <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                    <a href="https://mdbootstrap.com/education/bootstrap/"> Rukyim.com</a>
+                </div>
             </div>
             <!-- Copyright -->
 
         </footer>
         <!-- Footer -->
+
 
 @endsection
 </body>

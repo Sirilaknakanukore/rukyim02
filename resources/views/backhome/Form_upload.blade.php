@@ -49,6 +49,10 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .table-image td, .table-image th {
+            vertical-align: middle;
+        }
     </style>
 
     <div class="container">
@@ -69,20 +73,20 @@
             </div>
         @endif
 
-        <h3 class="jumbotron" style="font-family: 'Pridi', serif; "><i class="glyphicon glyphicon-upload"></i> อัพโหลดภาพ</h3>
+        <h3 class="jumbotron" style="font-family: 'Pridi', serif; "><i class="glyphicon glyphicon-upload"></i> UploadImage</h3>
         <form method="post" action="{{url('upload_data')}}" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="input-group control-group increment" >
-                <input type="file" name="filename[]" class="form-control">
+                <input style="border: none; height: 40px;" type="file" name="filename[]" class="form-control">
                 <div class="input-group-btn">
-                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                    <button style="border: none; height: 40px;" class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                 </div>
             </div>
             <div class="clone hide">
                 <div class="control-group input-group" style="margin-top:10px">
-                    <input type="file" name="filename[]" class="form-control">
+                    <input style="border: none; height: 40px;" type="file" name="filename[]" class="form-control">
                     <div class="input-group-btn">
-                        <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                        <button style="border: none; height: 40px;" class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                     </div>
                 </div>
             </div>
@@ -90,24 +94,31 @@
         </form>
         <br><hr>
 
-        <h4><i class="glyphicon glyphicon-picture"></i> Display Data Image    </h4>
-        <table class="table table-bordered table-hover table-striped">
-            <thead>
-            <tr><th>#</th>
-                <th>Picture</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($data as $image)
-                <tr><td>{{$image->id}}</td>
-                    <td> <?php foreach (json_decode($image->filename)as $picture) { ?>
-                        <img src="{{ asset('/image/'.$picture) }}" style="height:500px; width:400px"/>
-                        <?php } ?>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        <h4><i class="glyphicon glyphicon-picture"></i> Display Image</h4>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-image">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Image</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($data as $image)
+                        <tr>
+                            <th scope="row">{{$image->id}}</th>
+                            <td class="w-25">
+                                <?php foreach (json_decode($image->filename)as $picture) { ?>
+                                <img class="img-thumbnail" src="{{ asset('/image/'.$picture) }}" style="background: none; border: none;"/>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
     </div>
 
