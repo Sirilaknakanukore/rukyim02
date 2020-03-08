@@ -183,7 +183,6 @@
                 <div class="form-row">
                     <label for="password">ยืนยันรหัสผ่าน</label>
                     <input type="password"  id="password" class="input-text" name="password_confirmation"  autocomplete="new-password" placeholder="Your Password" required>
-
                 </div>
                 <div class="form-row-last">
                     <input type="submit" name="register" class="register" value="ยืนยันการสมัครสมาชิก">

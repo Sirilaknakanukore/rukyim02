@@ -1,7 +1,7 @@
 <br>
 <br>
 
-<img style="width: 100%" src="<?php echo asset('assets/images/imgg-01.jpg'); ?>">
+<img style="width: 100%" src="<?php echo asset('assets/images/imgg-01.png'); ?>">
 
 <div class="row">
     <div class="col-md-5 col-8" style="margin: 0 auto;"><a href="blog/create"class="btn btn-block" style="font-family:'Pridi',serif; border-radius:40px; background-color:#5bb298; z-index:999;color: white;width: 100%; margin-top: -20px; height: 50px;font-size: 18px; padding-top: 9px; ">แบ่งปันประสบการณ์ <i class="fas fa-pencil-alt"></i></a></div>

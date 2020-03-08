@@ -396,8 +396,6 @@
             }
         }
 
-        /*# sourceMappingURL=Searchs_130.css.map */
-
     </style>
     <div class="container">
         <br>
@@ -420,13 +418,15 @@
                 </div>
             </form>
         </div>
-
-
-        <br>
         <div class="row">
             <div class="col-md-7 col-9" style="margin: 0 auto;"><a href="/group/create"class="btn btn-block" style="font-family:'Pridi',serif; border-radius:40px; background-color:#5bb298; z-index:999;color: white;width: 100%; margin-top: -20px; height: 50px;font-size: 18px; padding-top: 9px; box-shadow: 0 8px 6px -6px #a3a3a3;">+ สร้างกลุ่ม </a></div>
         </div>
         <br>
+
+        <nav class="nav nav-pills nav-justified">
+            <a style="font-family:'Pridi', serif; background-color: #F38644;" class="nav-item nav-link active" href="/group">กลุ่มทั้งหมด</a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/group/groupsurvey">กลุ่มแนะนำที่เหมาะกับคุณ</a>
+        </nav>
         <div class="row">
             @if(!empty($groups))
                 @foreach($groups as $group)
@@ -435,7 +435,7 @@
                             <div class="card mb-sm-2 box-shadow" style="border: none;background-color: #fdf9f3; border-radius: 25px;">
                                 <div class="card-image" style="overflow: hidden;
   width: 100%; height: 200px;">
-                                    <img src="uploads/group_covers/{{$group->cover_image}}" alt="" style="width: 100%;">
+                                    <img src="/uploads/group_covers/{{$group->cover_image}}" alt="" style="width: 100%;">
                                 </div>
 
                                 <form class="card-body" action="/blog/{{$group->id}}" method="post">{{csrf_field()}}
@@ -454,9 +454,6 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 style="font-family: 'Pridi', serif;" class="modal-title" id="exampleModalLongTitle">{{$group->name}}</h5>
-                                                </div>
-                                                <div class="modal-body" style="font-family: 'Pridi', serif; ">
-                                                    คุณรู้สึกว่าคอมพิวเตอร์กับอินเตอร์เน็ตเป็นเรื่องง่าย แบบที่ไม่เกี่ยวว่าคุณจะอายุ มาเรียนรู้ไปด้วยกันเถอะ
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-family:'Pridi', serif;">ปิด</button>

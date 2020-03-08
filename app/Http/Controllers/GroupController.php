@@ -6,6 +6,7 @@ use App\Comphoto;
 use App\Group;
 use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
@@ -41,6 +42,7 @@ class GroupController extends Controller
         $group = new Group;
         $group->name = $request->input('name');
         $group->description = $request->input('description');
+        $group->tags = implode(",", $request->get('tags'));
         $group->cover_image = $filenameToStore;
         $group->save();
 
@@ -53,6 +55,17 @@ class GroupController extends Controller
         $groups = Group::all();
         return view('group.show',compact('groups'));
     }
+    public function showsurvey(){
+
+        //  SELECT * FROM photo WHERE album_id =$id
+        $groups = DB::table('backsurveys')->where('backsurveys.user_id','=',Auth::id())
+            ->join('groups','backsurveys.description','=','groups.tags')
+            ->get();
+
+//        dd($groups);
+//        $groups = Group::all();
+        return view('group.showsurvey',compact('groups'));
+    }
     public function detail($id){
 
         //  SELECT * FROM photo WHERE album_id =$id
@@ -63,8 +76,6 @@ class GroupController extends Controller
 
         $search = $request->get('search');
         $groups = Group::where('name','like','%'.$search.'%') ->paginate(5)->setpath('');
-
-
         return view('group.show',['groups'=>$groups]);
     }
 }

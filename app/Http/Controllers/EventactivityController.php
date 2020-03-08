@@ -14,7 +14,8 @@ class EventactivityController extends Controller
         $activities->user_id = Auth::id();
         $activities->activity_id = $id;
         $activities->save();
-
         return redirect('/activity/detail/'.$activities->activity_id)->with('success','EventGroup');
     }
+
+
 }

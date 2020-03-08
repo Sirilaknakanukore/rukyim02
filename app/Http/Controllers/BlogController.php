@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\blog;
 use App\Comment;
+use App\FormMultipleUpload;
 use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ class BlogController extends Controller
         $blog = new blog;
         $blog->name = $request->input('name');
         $blog->description = $request->input('description');
-        $blog->tags = $request->input('tags');
+        $blog->tags = implode(",", $request->get('tags'));
         $blog->user_id = Auth::id();
         $blog->cover_image = $filenameToStore;
         $blog->save();
@@ -54,8 +55,21 @@ class BlogController extends Controller
     public function show(){
 
         //  SELECT * FROM photo WHERE album_id =$id
+        $data = FormMultipleUpload::all();
         $blogs = blog::all();
-        return view('blog.show',compact('blogs'));
+        return view('blog.show',compact('blogs','data'));
+    }
+
+    public function showsurvey(){
+
+        //  SELECT * FROM photo WHERE album_id =$id
+        $data = FormMultipleUpload::all();
+        $blogs = DB::table('backsurveys')->where('backsurveys.user_id','=',Auth::id())
+            ->join('blogs','backsurveys.description','=','blogs.tags')
+            ->get();
+
+//        $blogs = blog::all();
+        return view('blog.showsurvey',compact('blogs','data'));
     }
 
     public function detail($id){

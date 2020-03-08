@@ -6,6 +6,7 @@ use App\backsurvey;
 use App\blog;
 use App\FormMultipleUpload;
 use App\Profile;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +63,23 @@ class FormController extends Controller
         $backsurveys = backsurvey::all()->where('user_id',Auth::id());
         $backsurveys->user_id = Auth::id();
 
-        return view('home.profile',compact('profile','backsurveys','data'));
+        return view('home.profile',array('user' => Auth::user()),compact('profile','backsurveys','data'));
+    }
+    public function update_avatar(Request $request){
+
+        // Handle the user upload of avatar
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+
+            $user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();
+        }
+        return redirect('/profile')->with('success','Liked');
+//        return view('home.profile', array('user' => Auth::user()) );
+
     }
 
     public function history(){

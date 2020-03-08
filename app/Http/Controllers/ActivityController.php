@@ -47,6 +47,7 @@ class ActivityController extends Controller
         $activity->date = $request->input('date');
         $activity->location = $request->input('location');
         $activity->time = $request->input('time');
+        $activity->tags = implode(",", $request->get('tags'));
         $activity->activity_image = $filenameToStore;
         $activity->save();
 
@@ -63,7 +64,17 @@ class ActivityController extends Controller
         $count = Event::count();
         return view('activity.show',compact('activities','count'));
     }
+    public function showsurvey(){
 
+        //  SELECT * FROM photo WHERE album_id =$id
+
+//        $activities = Activity::all();
+        $activities = DB::table('backsurveys')->where('backsurveys.user_id','=',Auth::id())
+            ->join('activities','backsurveys.description','=','activities.tags')
+            ->get();
+        $count = Event::count();
+        return view('activity.showsurvey',compact('activities','count'));
+    }
     public function detail($id){
 
         //  SELECT * FROM photo WHERE album_id =$id

@@ -11,7 +11,7 @@
 
 
 </head>
-<body style="background-color:#f8d9a9;">
+
 @include('inc.navbar')
 <div class="container mt-10">
     @include('inc.message')
@@ -106,9 +106,50 @@
     });
 </script>
 
+<script>
+    $("document").ready(function(){
+
+        //Increase font size
+        $("#increase-size").click(function(){
+            $("p").css("font-size", "+=1");
+        });
+
+        //Decrease font size
+        $("#decrease-size").click(function(){
+            $("p").css("font-size", "-=1");
+        });
+    });
+</script>
+
+<script>
+    function darkmode() {
+        $("body").addClass("dark-mode-body");
+        localStorage.setItem("mode", "dark");
+    }
+
+    function nodark() {
+        $("body").removeClass("dark-mode-body");
+        localStorage.setItem("mode", "light");
+    }
+
+    $("#mode").change(function() {
+        if ($(this).prop("checked")) {
+            darkmode();
+        } else {
+            nodark();
+        }
+    });
+
+</script>
+
+<script>
+    $(".js-example-tags").select2({
+        tags: true
+    });
+</script>
 
 
 
 
-</body>
+
 </html>

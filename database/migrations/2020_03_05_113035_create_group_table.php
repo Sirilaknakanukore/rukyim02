@@ -17,6 +17,7 @@ class CreateGroupTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
+            $table->text('tags');
             $table->string('cover_image');
             $table->timestamps();
         });

@@ -7,14 +7,24 @@
     <div class="container">
         <br>
         <br>
-        @if(!empty($backsurveys))
-            @foreach($backsurveys as $backsurvey)
-                <h4 style="font-family:'Pridi',serif; color: #F38644; text-align: center;">{{ Auth::user()->name }}</h4>
-                <h6 style="font-family:'Pridi',serif; color: #949ca2; text-align: center;">ความชอบ : {{$backsurvey->description}}</h6>
+        <div class="col-md-10 col-md-offset-2">
+            <img src="/uploads/avatars/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+            @if(!empty($backsurveys))
+                @foreach($backsurveys as $backsurvey)
+                    <h4 style="font-family:'Pridi',serif; color: #F38644;">{{ Auth::user()->name }}</h4>
+                    <h6 style="font-family:'Pridi',serif; color: #949ca2;">ความชอบ : {{$backsurvey->description}}</h6>
+                    <br>
+                @endforeach
+            @endif
+            <form enctype="multipart/form-data" action="/profile/update" method="POST">
+                <label style="font-family:'Pridi',serif;">เปลี่ยนรูปโปรไฟล์</label>
+                <input type="file" name="avatar">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <br>
-            @endforeach
-        @endif
-
+                <input type="submit"class="pull-right btn btn-sm btn-primary">
+            </form>
+        </div>
+        <br>
 
         <nav class="nav nav-pills nav-justified">
             <a style="font-family:'Pridi', serif; background-color: #F38644;" class="nav-item nav-link active" href="#">profile</a>
@@ -23,15 +33,30 @@
         </nav>
         <br>
         @foreach($data as $image)
-                <div class="card-body" style=" vertical-align: center;background-color: #f4e6bd;">
-                    <?php
-                    $filename = json_decode($image->filename);?>
-                    <div class="card-img">
-                    <img class="rounded mx-auto d-block" src="{{ asset('/image/'.$filename[0]) }}">
-                    </div>
+            <div class="card-body" style=" vertical-align: center;background-color: #f4e6bd;">
+                <?php
+                $filename = json_decode($image->filename);?>
+                <div class="card-img">
+                    <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[0]) }}">
                 </div>
-                <br>
+            </div>
+            <br>
         @endforeach
+
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+            นักอ่าน
+            <span class="badge badge-primary badge-pill">14  /100</span>
+        </li>
+        <br>
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+            นักเขียน
+            <span class="badge badge-primary badge-pill">5  /100</span>
+        </li>
+        <br>
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+            นักกิจกรรม
+            <span class="badge badge-primary badge-pill">2  /100</span>
+        </li>
 
     </div>
 

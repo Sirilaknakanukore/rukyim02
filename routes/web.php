@@ -24,6 +24,9 @@ Route::delete('/blog/{id}','BlogController@destroy');
 Route::post('/blog/detail/{id}/comment','CommentController@store');
 Route::post('/blog/detail/{id}','LikeController@update');
 
+Route::get('/blog/blogsurvey','BlogController@showsurvey');
+
+Route::post('/blog/count','ReadcountController@update');
 
 //Route::get('/blog/detail/{id}','CommentController@detail');
 //Route::post('/blog/detail/{id}','CommentController@store');
@@ -36,6 +39,7 @@ Route::get('/logout','Auth\LoginController@logout');
 
 
 Route::get('/profile','FormController@profile');
+Route::post('/profile/update','FormController@update_avatar');
 
 
 
@@ -48,8 +52,12 @@ Route::get('/','HomeController@index');
 Route::get('/group/create','GroupController@create');
 Route::post('/group/store','GroupController@store');
 Route::get('/group','GroupController@show');
+Route::get('/group/groupsurvey','GroupController@showsurvey');
 Route::get('/group','GroupController@search');
 Route::get('/group/{id}','GroupController@detail');
+
+
+Route::get('/group/groupsurvey','GroupController@showsurvey');
 
 Route::get('/photos/create/{id}','PostgroupController@create');
 Route::post('/photos/store','PostgroupController@store');
@@ -65,13 +73,14 @@ Route::get('/activity/detail/{id}','ActivityController@detail');
 
 Route::post('/activity/detail/{id}','EventactivityController@update');
 
+Route::get('/activity/survey','ActivityController@showsurvey');
+
 
 //backend
 
 //Route::get('/backend/create/survey','AvatarController@create');
 
 Route::post('/backend/survey/store','AvatarController@store');
-
 Route::get('/home/survey','AvatarController@show');
 
 //Route::get('/backend/avatar','FirstController@create');
