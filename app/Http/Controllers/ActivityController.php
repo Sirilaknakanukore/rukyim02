@@ -60,8 +60,8 @@ class ActivityController extends Controller
 //        $data = DB::table('profiles')->where('user_id','=',Auth::id())
 //            ->join('form_multiple_uploads as fmu','profiles.image','=','fmu.id')
 //            ->get();
-        $activities = Activity::all();
-        $count = Event::count();
+        $activities = Activity::orderBy('id', 'DESC')->get();
+        $count = Event::where('user_id',Auth::id())->count();
         return view('activity.show',compact('activities','count'));
     }
     public function showsurvey(){

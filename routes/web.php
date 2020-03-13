@@ -26,11 +26,8 @@ Route::post('/blog/detail/{id}','LikeController@update');
 
 Route::get('/blog/blogsurvey','BlogController@showsurvey');
 
-Route::post('/blog/count','ReadcountController@update');
-
-//Route::get('/blog/detail/{id}','CommentController@detail');
-//Route::post('/blog/detail/{id}','CommentController@store');
-
+Route::post('blog/detail/{id}/count','ReadcountController@update');
+//Route::get('/profile','ReadcountController@show');
 
 Auth::routes();
 Route::get('/logout','Auth\LoginController@logout');
@@ -45,7 +42,9 @@ Route::post('/profile/update','FormController@update_avatar');
 
 
 Route::get('/profile/post','ProfileController@show');
-Route::get('/profile/blog/detail/{id}','ProfileController@detail');
+Route::get('/profile/activity','ProfileController@showactivity');
+Route::get('/profile/group','ProfileController@showgroup');
+
 
 Route::get('/','HomeController@index');
 
@@ -55,6 +54,8 @@ Route::get('/group','GroupController@show');
 Route::get('/group/groupsurvey','GroupController@showsurvey');
 Route::get('/group','GroupController@search');
 Route::get('/group/{id}','GroupController@detail');
+
+Route::post('/group/{id}/count','GroupController@update');
 
 
 Route::get('/group/groupsurvey','GroupController@showsurvey');
@@ -100,10 +101,18 @@ Route::get('/home/profile','AvatarController@show');
 
 
 
+
+
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
+
+Route::get('auth/line', 'AuthController@redirectToProvider')->name('line.auth');;
+Route::get('auth/line/callback', 'AuthController@handleProviderCallback');
+Route::get('qr', 'AuthController@handleProviderCallback');
+
+Auth::routes();
 
 

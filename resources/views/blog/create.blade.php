@@ -123,19 +123,13 @@
             <div id="main">
                 <textarea id="editor" name="description" placeholder="เขียนเรื่องเล่า"cols="45" rows="5"></textarea>
             </div>
-            {{--<div class="card mt-2" style="border: none;">--}}
-            {{--<div class="card-body" style="border: none;" >--}}
-            {{--<div id="tags" class="tags-container">--}}
-            {{--<span style="font-family:'Pridi', serif;" class="tag">ติดแท็กเรื่องเล่า</span>--}}
-            {{--<input style="border: none;" id="search" name="tags" type="text"/>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
             <br>
             <br>
             <button type="submit" value="Submit" class="btn btn-secondary btn-dark btn-block" style="font-family:'Pridi', serif; background-color: black; height: 50px;" >เขียนบันทึกเสร็จสิ้น</button>
         </form>
     </div>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

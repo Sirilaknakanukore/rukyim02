@@ -148,6 +148,10 @@
     });
 </script>
 
+<script>
+    AOS.init();
+</script>
+
 
 
 

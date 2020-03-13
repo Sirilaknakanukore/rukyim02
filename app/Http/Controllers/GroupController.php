@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comphoto;
 use App\Group;
+use App\Groupcount;
 use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,7 @@ class GroupController extends Controller
         $group->name = $request->input('name');
         $group->description = $request->input('description');
         $group->tags = implode(",", $request->get('tags'));
+        $group->user_id = Auth::id();
         $group->cover_image = $filenameToStore;
         $group->save();
 
@@ -52,8 +54,10 @@ class GroupController extends Controller
     public function show(){
 
         //  SELECT * FROM photo WHERE album_id =$id
-        $groups = Group::all();
-        return view('group.show',compact('groups'));
+        $groupcount = Groupcount::where('user_id',Auth::id())->where('group_id')->first();
+        $gcount = Groupcount::count();
+        $groups = Group::orderBy('id', 'DESC')->get();
+        return view('group.show',compact('groups','groupcount','gcount'));
     }
     public function showsurvey(){
 
@@ -65,6 +69,15 @@ class GroupController extends Controller
 //        dd($groups);
 //        $groups = Group::all();
         return view('group.showsurvey',compact('groups'));
+    }
+    public function update(Request $request, $id)
+    {
+        $groups= new Groupcount;
+        $groups->user_id = Auth::id();
+        $groups->group_id = $id;
+        $groups->save();
+
+        return redirect('/group/'.$groups->group_id);
     }
     public function detail($id){
 

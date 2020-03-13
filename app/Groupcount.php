@@ -4,16 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model
+class Groupcount extends Model
 {
     //
-    protected $fillable = array('id','name','cover_image','user_id');
+    protected $fillable = array('id','user_id','group_id');
 
-    public function photos() {
-        return $this->hasMany('App\Photo');
-    }
-    public function comphoto() {
-        return $this->hasMany('App\Comphoto');
+    public function group(){
+        return $this->belongsTo('App\Group');
     }
 
 }

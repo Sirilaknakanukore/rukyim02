@@ -7,30 +7,48 @@
         <br>
         <br>
         <div class="row">
-            @if(!empty($activities))
-                @foreach($activities as $activity)
+            @if(!empty($groups))
+                @foreach($groups as $group)
+                    <?php
+                    $countgroup = \Illuminate\Support\Facades\DB::table('groups')->where('groups.id',$group->id)
+                        ->join('groupcounts','groupcounts.group_id','=','groups.id')->count();
+                    //                    dd($countlike);
+                    ?>
                     <div class="col-md-6" >
-                        <a href="/activity/detail/{{$activity->id}}" style="text-decoration: none;">
-                            <div class="card-body" style="border: none;">
-                                <div class="card mb-sm-2 box-shadow" style="border: none;background-color: #fdf9f3; border-radius: 20px;">
-                                    <div class="card-image-overlay" style="overflow: hidden;
-  width: 100%; height: 200px; border-top-right-radius: 20px;  border-top-left-radius: 20px;">
-                                        <img src="/uploads/activity_covers/{{$activity->activity_image}}" alt="" style="width: 100%; z-index:100;">
+                        <div class="card mb-3" style="border: none; border-radius: 10px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <br>
+                                    <img  src="/uploads/group_covers/{{$group->cover_image}}" alt="" style="width: 100%; margin-left: 10px; border-radius: 10px;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 style="font-family:'Pridi',serif; color: #cac7c1;text-decoration: none; ">{{$group->name}}</h6>
+                                        <h6 style="font-family:'Pridi',serif; color: #cac7c1;text-decoration: none;">คนเข้าร่วม {{$countgroup }}</h6>
+                                        <hr>
+                                        <h6 style="font-family:'Pridi', serif; font-size: 18px;text-decoration: none; color: black; " >{{Illuminate\Support\Str::limit($group->description, 50)}} </h6>
+                                        <p class="card-text"><small class="text-muted">{{$group->updated_at}}</small></p>
+
+                                        <form class="ajax-form" action="/group/{{$group->id}}/count" method="POST">
+                                            {{csrf_field()}}
+                                            @if(empty($groupcount))
+                                                <button  type="submit" class="btn button01" style="background-color: #fbb370;">เข้าร่วมกลุ่ม</button>@else
+                                                <button type="submit" class="btn btn-outline-primary" style="font-family:'Pridi',serif;border-color: #F38644; border-width: medium; color:#F38644; ">ได้เข้าร่วมกิจกรรมเป็นที่เรียบร้อย</button>
+
+                                            @endif
+                                        </form>
                                     </div>
-                                    <form class="card-body" action="/activity/{{$activity->id}}" method="post">{{csrf_field()}}
-                                        <h4 style="font-family:'Pridi', serif; color: #706e70; "> <span class="badge badge-secondary" style="background-color:#F38644; font-size: medium; font-family:'Pridi', serif; float: right;"></span> {{$activity->name}} </h4>
-                                        <h6 style="font-family:'Pridi', serif; color: #706e70; "><i class="fas fa-circle" style="color: #f47746;"></i> {{$activity->date}}</h6>
-                                    </form>
+
+
                                 </div>
                             </div>
-                        </a>
-
+                        </div>
                     </div>
-
 
                 @endforeach
             @endif
         </div>
-    </div>
+
+        </div>
 @endsection
 </body>

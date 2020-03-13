@@ -6,6 +6,8 @@ use App\blog;
 use App\Comment;
 use App\FormMultipleUpload;
 use App\Like;
+use App\Profile;
+use App\Read;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -55,9 +57,14 @@ class BlogController extends Controller
     public function show(){
 
         //  SELECT * FROM photo WHERE album_id =$id
+        $reads = Read::where('user_id',Auth::id())->where('blog_id')->first();
+
         $data = FormMultipleUpload::all();
-        $blogs = blog::all();
-        return view('blog.show',compact('blogs','data'));
+        //        dd($likecount);
+        $likecount = Like::count();
+        $user = Profile::all();
+        $blogs = blog::orderBy('id', 'DESC')->get();
+        return view('blog.show',compact('blogs','data','reads','likecount','user'));
     }
 
     public function showsurvey(){
@@ -67,9 +74,9 @@ class BlogController extends Controller
         $blogs = DB::table('backsurveys')->where('backsurveys.user_id','=',Auth::id())
             ->join('blogs','backsurveys.description','=','blogs.tags')
             ->get();
-
+        $likecount = Like::count();
 //        $blogs = blog::all();
-        return view('blog.showsurvey',compact('blogs','data'));
+        return view('blog.showsurvey',compact('blogs','data','likecount'));
     }
 
     public function detail($id){
@@ -77,6 +84,7 @@ class BlogController extends Controller
         //  SELECT * FROM photo WHERE album_id =$id
         $blogs = blog::find($id);
         $blog = json_decode($blogs);
+        $data = FormMultipleUpload::all();
         $tagblogs = DB::table('blogs')->select('*')->where('id','!=',$id)->where('tags','=',$blog->tags)->limit(3)->get();
 
 //        dd($tagblogs);
@@ -86,7 +94,7 @@ class BlogController extends Controller
         $exitslike = Like::where('user_id',Auth::id())->where('blog_id',$id)->first();
         $likecount = Like::where('blog_id',$id)->count();
 
-        return view('blog.detail',compact('blogs','comments','likecount','exitslike','tagblogs'));
+        return view('blog.detail',compact('blogs','comments','likecount','exitslike','tagblogs','data'));
     }
     public function destroy($id) {
         $blog = blog::find($id);

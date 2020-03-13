@@ -23,7 +23,7 @@ class AvatarController extends Controller
         $backsurvey->description = implode(",", $request->get('description'));
         $backsurvey->save();
 //      dd($request->option());
-        return redirect('/profile')->with('success','backsurvey Create');
+        return redirect('/home')->with('success','backsurvey Create');
     }
     public function show(){
 

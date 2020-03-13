@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\backsurvey;
 use App\blog;
+use App\Event;
 use App\FormMultipleUpload;
+use App\Groupcount;
 use App\Profile;
+use App\Read;
 use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,15 +58,22 @@ class FormController extends Controller
     public function profile(){
 
         //  SELECT * FROM photo WHERE album_id =$id
+        $countblog = Read::where('user_id',Auth::id())->count();
+        $count = Event::where('user_id',Auth::id())->count();
+        $countwrite = blog::where('user_id',Auth::id())->count();
+        $gcount= Groupcount::where('user_id',Auth::id())->count();
+//        dd($countblog);
+
         $profile = Profile::all()->where('user_id',Auth::id());
         $data = DB::table('profiles')->where('user_id','=',Auth::id())
             ->join('form_multiple_uploads as fmu','profiles.image','=','fmu.id')
             ->get();
+
 //        dd(json_decode($data));
         $backsurveys = backsurvey::all()->where('user_id',Auth::id());
         $backsurveys->user_id = Auth::id();
 
-        return view('home.profile',array('user' => Auth::user()),compact('profile','backsurveys','data'));
+        return view('home.profile',array('user' => Auth::user()),compact('profile','backsurveys','data','countblog','count','countwrite','gcount'));
     }
     public function update_avatar(Request $request){
 

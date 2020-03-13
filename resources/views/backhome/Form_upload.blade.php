@@ -53,6 +53,7 @@
         .table-image td, .table-image th {
             vertical-align: middle;
         }
+
     </style>
 
     <div class="container">

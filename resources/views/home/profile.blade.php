@@ -16,6 +16,7 @@
                     <br>
                 @endforeach
             @endif
+
             <form enctype="multipart/form-data" action="/profile/update" method="POST">
                 <label style="font-family:'Pridi',serif;">เปลี่ยนรูปโปรไฟล์</label>
                 <input type="file" name="avatar">
@@ -23,13 +24,16 @@
                 <br>
                 <input type="submit"class="pull-right btn btn-sm btn-primary">
             </form>
+
         </div>
+
         <br>
 
         <nav class="nav nav-pills nav-justified">
             <a style="font-family:'Pridi', serif; background-color: #F38644;" class="nav-item nav-link active" href="#">profile</a>
-            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/profile/post">โพสต์</a>
-            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="#">กิจกรรม</a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/profile/post">โพสต์ ( {{$countwrite}} ) </a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/profile/activity">กิจกรรม ( {{$count}} )</a>
+            <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/profile/group">กลุ่มที่เข้าร่วม ( {{$gcount}} )</a>
         </nav>
         <br>
         @foreach($data as $image)
@@ -37,25 +41,37 @@
                 <?php
                 $filename = json_decode($image->filename);?>
                 <div class="card-img">
-                    <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[0]) }}">
+                    @if($countblog <= 5)
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[2]) }}">
+                    @elseif ($countblog > 5 && $countblog <=10 )
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[3]) }}">
+                    @elseif ($countblog > 10 && $countblog <=15 )
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[4]) }}">
+                    @elseif ($countblog > 20)
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[5]) }}">
+                    @elseif ($countblog > 40)
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[6]) }}">
+                    @else
+                        <img class="rounded mx-auto d-block" width="50%;" src="{{ asset('/image/'.$filename[2]) }}">
+                    @endif
                 </div>
             </div>
             <br>
         @endforeach
 
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif;">
             นักอ่าน
-            <span class="badge badge-primary badge-pill">14  /100</span>
+            <span class="badge badge-primary badge-pill">{{$countblog}} /50</span>
         </li>
         <br>
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+        <li class="list-group-item d-flex justify-content-between align-items-center " style="font-family:'Pridi',serif;">
             นักเขียน
-            <span class="badge badge-primary badge-pill">5  /100</span>
+            <span class="badge badge-primary badge-pill">{{$countwrite}}  /50</span>
         </li>
         <br>
-        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif; ">
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="font-family:'Pridi',serif;">
             นักกิจกรรม
-            <span class="badge badge-primary badge-pill">2  /100</span>
+            <span class="badge badge-primary badge-pill">{{$count}}  /50</span>
         </li>
 
     </div>

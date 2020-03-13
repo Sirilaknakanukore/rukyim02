@@ -423,49 +423,48 @@
         </div>
         <br>
 
-        <nav class="nav nav-pills nav-justified">
+        <nav class="nav nav-pills nav-justified" style="background-color: white;">
             <a style="font-family:'Pridi', serif; background-color: #F38644;" class="nav-item nav-link active" href="/group">กลุ่มทั้งหมด</a>
             <a style="font-family:'Pridi', serif; color: #F38644; " class="nav-item nav-link" href="/group/groupsurvey">กลุ่มแนะนำที่เหมาะกับคุณ</a>
         </nav>
+        <br>
+        <br>
         <div class="row">
             @if(!empty($groups))
                 @foreach($groups as $group)
+                    <?php
+                    $countgroup = \Illuminate\Support\Facades\DB::table('groups')->where('groups.id',$group->id)
+                        ->join('groupcounts','groupcounts.group_id','=','groups.id')->count();
+                    //                    dd($countlike);
+                    ?>
                     <div class="col-md-6" >
-                        <div class="card-body" style="border: none;">
-                            <div class="card mb-sm-2 box-shadow" style="border: none;background-color: #fdf9f3; border-radius: 25px;">
-                                <div class="card-image" style="overflow: hidden;
-  width: 100%; height: 200px;">
-                                    <img src="/uploads/group_covers/{{$group->cover_image}}" alt="" style="width: 100%;">
-                                </div>
-
-                                <form class="card-body" action="/blog/{{$group->id}}" method="post">{{csrf_field()}}
-                                    <h4 style="font-family:'Pridi', serif; color: #706e70; ">{{$group->name}}</h4>
-                                    <h6 style="font-family:'Pridi', serif; font-size: 20px;text-decoration: none; color: black; " >{{$group->description}} </h6>
-
-                                    <hr style="color: black;">
-
-                                    <h6 style="font-family:'Pridi',serif; color: #cac7c1;text-decoration: none;"> ชื่อผู้ใช้ : {{ Auth::user()->name }}</h6>
+                        <div class="card mb-3" style="border: none; border-radius: 10px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
                                     <br>
-                                    <button style="background-color: #6B84B5; border: none; font-family: 'Pridi', serif; margin: 0 auto;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                        เข้าร่วมกลุ่ม
-                                    </button>
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 style="font-family: 'Pridi', serif;" class="modal-title" id="exampleModalLongTitle">{{$group->name}}</h5>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-family:'Pridi', serif;">ปิด</button>
-                                                    <a href="group/{{$group->id}}"><button type="button" class="btn btn-primary" style="font-family:'Pridi', serif; background-color: #F38644; border: none; ">เข้าร่วมกลุ่ม</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <img  src="/uploads/group_covers/{{$group->cover_image}}" alt="" style="width: 100%; margin-left: 10px; border-radius: 10px;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h6 style="font-family:'Pridi',serif; color: #cac7c1;text-decoration: none; ">{{$group->name}}</h6>
+                                        <h6 style="font-family:'Pridi',serif; color: #cac7c1;text-decoration: none;">คนเข้าร่วม {{$countgroup }}</h6>
+                                        <hr>
+                                        <h6 style="font-family:'Pridi', serif; font-size: 18px;text-decoration: none; color: black; " >{{Illuminate\Support\Str::limit($group->description, 50)}} </h6>
+                                        <p class="card-text"><small class="text-muted">{{$group->updated_at}}</small></p>
+
+                                        <form class="ajax-form" action="/group/{{$group->id}}/count" method="POST">
+                                            {{csrf_field()}}
+                                            @if(empty($groupcount))
+                                                <button onclick="return confirm('คุณต้องการเข้าร่วมกลุ่มใช่หรือไหม')"  type="submit" class="btn button01" style="background-color: #fbb370;">เข้าร่วมกลุ่ม</button>
+                                            @else
+                                                <button type="submit" class="btn btn-outline-primary" style="font-family:'Pridi',serif;border-color: #F38644; border-width: medium; color:#F38644; ">เข้าร่วมกลุ่มเรียบร้อย</button>
+                                            @endif
+                                        </form>
                                     </div>
-                                </form>
 
+
+                                </div>
                             </div>
-
                         </div>
                     </div>
                     <br>

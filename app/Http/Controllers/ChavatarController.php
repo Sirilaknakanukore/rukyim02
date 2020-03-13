@@ -18,7 +18,8 @@ class ChavatarController extends Controller
         $profile->image = $request->input('image_id');
         $profile->save();
 //      dd($request->option());
-        return redirect('/home/survey')->with('success','backsurvey Create');
+        return redirect('/profile')->with('success','backsurvey Create');
     }
+
 
 }

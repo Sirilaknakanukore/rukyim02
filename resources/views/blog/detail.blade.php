@@ -1,6 +1,8 @@
 <body class="dark-mode-body">
 @extends('layouts.app')
 @section('content')
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         body {
             background-color: #fcf1dd;
@@ -150,6 +152,18 @@
     @endforeach
     <br>
     <br>
+    <div data-aos="fade-right" data-aos-easing="ease-in-sine">
+        @foreach($data as $image)
+            <?php
+            $filename = json_decode($image->filename);?>
+            <a href="/blog" style="text-decoration: none;">
+                <div class="card-img" style="margin-right: auto;opacity: 1; transform: matrix(1, 0, 0, 1, 0.5, 0);">
+                    <img style="width: 30%;" src="{{ asset('/image/'.$filename[1]) }}">
+                </div>
+            </a>
+            <br>
+        @endforeach
+    </div>
     <div class="container">
         <div class="card mt-2" style="background-color: #f3e5bc; border: none;">
             <form method="POST" action="/blog/detail/{{$blogs->id}}/comment" enctype="multipart/form-data">
@@ -170,6 +184,15 @@
     <div class="container">
         @if(!empty($comments))
             @foreach($comments as $comment)
+                <?php
+                $user = \Illuminate\Support\Facades\DB::table('comments')->where('comments.id',$comment->id)
+                    ->join('users','users.id','=','comments.user_id')->select('users.name')->first();
+
+                $userimg = \Illuminate\Support\Facades\DB::table('comments')->where('comments.id',$comment->id)
+                    ->join('users','users.id','=','comments.user_id')->select('users.avatar')->first();
+
+                //                    dd($user);
+                ?>
                 <div class="card" style="border: none; border-radius: 10px;" >
                     <div class="card-body" style="border: none; background-color: #fdf9f3;" >
                         <label style="font-family:'Pridi', serif; font-size: small;">ความคิดเห็น</label>
@@ -177,7 +200,7 @@
                             <h5 style="font-family:'Pridi', serif;">{{$comment->body}}</h5>
                         </blockquote>
                         <hr style="color:#fcf1dd;">
-                        <h6 style="font-family:'Pridi',serif; color: #b5b4b4; font-size: 14px;">ชื่อผู้ใช้ : {{ Auth::user()->name }}</h6>
+                        <img src="/uploads/avatars/{{ $userimg ->avatar }}" style="width:50px; height:50px; border-radius:50%; margin-left:10px; margin-top: -10px;"><h6 style="font-family:'Pridi',serif; color: #b5b4b4; font-size: 14px; margin-top: -40px; margin-left:80px;">ชื่อผู้ใช้ : {{ $user->name }}</h6>
                     </div>
                 </div>
                 <br>
@@ -186,7 +209,6 @@
     </div>
     {{--createcomment--}}
     <br>
-
     <!-- Footer -->
     <footer class="page-footer font-small unique-color-dark" style="background-color: #5bb298;">
 
